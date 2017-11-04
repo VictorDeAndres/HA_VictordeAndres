@@ -1,0 +1,113 @@
+// Add styles for the UI Component here
+.card {
+    display: flex;
+    flex-direction: column;
+    width: 260px;
+    height: 262px;
+    font-family: 'Roboto', sans-serif;
+    border: lightgray;
+    border-radius: 8px;
+    border-style: solid;
+    border-width: thin;
+    margin-top: 2em;
+    box-shadow: 0px 0px 32px 0px rgba(0, 0, 0, 0.25);
+
+    &--image {
+        display: flex;
+        width: 260px;
+        height: 180px;
+    }
+
+    &--text {
+        display: flex;
+        flex-direction: column;
+        height: 82px;
+        padding: 8px 16px 8px 14px;
+        &--row {
+            height: 33%;
+        }
+        &--description {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: baseline;
+            &--price {
+                margin: unset;
+                color: #353e44;
+                opacity: 1;
+                font-size: 18px;
+                font-weight: 700;
+                line-height: 24px;                
+            }
+            &--average {
+                margin: unset;
+                padding: 0 4px;
+                color: #353e44;
+                opacity: 1;
+                font-size: 14px;
+                font-weight: 400;
+                line-height: 21px;
+            }
+        }
+        &--feature {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            &--data{
+                margin: unset;
+                color: #353e44;
+                opacity: 1;
+                font-size: 14px;
+                font-weight: 400;
+                line-height: 21px;
+            }
+        }
+        &--review {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            margin-left: -3px; // undo padding starts
+            
+            &--start__full:before{
+                font-family: FontAwesome;
+                content: '\f005';
+                color: #fbda4d;
+                opacity: 1;
+                padding: 0 3px;
+            }
+            &--start__half:before{
+                font-family: FontAwesome;
+                content: '\f005';
+                color: #d7d8da;
+                opacity: 1;
+                padding: 0 3px;
+            }                        
+            &--start__half:after{
+                font-family: FontAwesome;
+                content: '\f089';
+                color: #fbda4d;
+                opacity: 1;
+                padding: 0 3px;
+                margin-left: -21px;
+                margin-right: 6px;                
+            }
+            &--start__empty:before{
+                font-family: FontAwesome;
+                content: '\f005';
+                color: #d7d8da;
+                opacity: 1;
+                padding: 0 2px;
+            }
+            &--text{
+                padding-left: 8px;
+                margin: unset;
+                color: #353e44;
+                opacity: 1;
+                font-size: 14px;
+                font-weight: 400;
+                line-height: 21px;
+            }
+        }
+    }
+}
+

@@ -1,0 +1,28 @@
+{
+  "name": "code-challenge-v1",
+  "version": "1.0.0",
+  "description": "code challenge",
+  "main": "dist/js/index.js",
+  "scripts": {
+    "start": "rm -rf dist/{css,js} && gulp"
+  },
+  "author": "Ian White",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-preset-env": "^1.6.0",
+    "babelify": "^8.0.0",
+    "browserify": "^14.5.0",
+    "gulp-babel": "^7.0.0",
+    "gulp-less": "^3.3.2",
+    "gulp-watch": "^4.3.11",
+    "gulp-webserver": "^0.9.1",
+    "vinyl-source-stream": "^1.1.0"
+  },
+  "dependencies": {
+    "gulp": "^3.9.1",
+    "lodash": "^4.17.4",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0"
+  }
+}
