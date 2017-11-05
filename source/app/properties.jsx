@@ -10,34 +10,46 @@ class Properties extends React.Component {
             propertiesList: []
         };
         this.loopTime = 15;
+        this.loadingProperties = false;
     }
 
     componentDidMount() {
         this.getProperties(); // First Render
-        
+
         // Render every 15 secs
-        setInterval(
-            () => {
-                if ( this.decreasesTime() === 0 ){
-                    this.getProperties();
-                } 
-            },
-            1000
+        setInterval(() => {
+            if (this.decreasesTime() === 0) {
+                this.getProperties();
+            }
+        }, 1000
         );
     }
 
-    initCount(){
+    componentWillReceiveProps(nextProps) {
+        if (this.state.propertiesList.length !== 0 ) { // Have data in array 
+            this.setState({
+                propertiesList: this.orderProperties(
+                    this.state.propertiesList,
+                    nextProps.orderField,
+                    nextProps.desc)
+            });
+        }
+    }
+
+    initCount() {
         const secRepeat = 15;
         return secRepeat;
     }
 
-    decreasesTime(){
+    decreasesTime() {
         this.loopTime--;
         return this.loopTime;
     }
 
-    orderProperties(__properties, __orderby) {
-        __properties = _.orderBy(__properties, [__orderby],['desc']); 
+    orderProperties(__properties, __orderby, __desc) {
+        const orderType = __desc ? 'desc' : 'asc';
+        __properties = _.orderBy(__properties, [__orderby], [orderType]);
+        this.loopTime = 15; // Reset loop time
         return __properties;
     }
 
@@ -52,31 +64,31 @@ class Properties extends React.Component {
         return __properties;
     }
 
-    initializeStates(){
-        this.setState({ propertiesList: []});
-        this.props.callbackParent(true); // we notify our parent
+    initializeStates() {
+        this.setState({ propertiesList: [] });
+        this.props.callbackParent(true);
     }
 
-    getProperties(){
+    getProperties() {
         this.initializeStates();
 
         let properties = [];
         const api = new window.propertyAPI.Poller();
 
-        const getHouses = api.poll({type: 'houses'})
-            .then( responseHouses => {
+        const getHouses = api.poll({ type: 'houses' })
+            .then(responseHouses => {
                 properties = properties.concat(responseHouses);
             });
 
-        const getCondos = api.poll({type: 'condos'})
-            .then( responseCondos => {
+        const getCondos = api.poll({ type: 'condos' })
+            .then(responseCondos => {
                 properties = properties.concat(responseCondos);
             });
 
-        Promise.all([getHouses, getCondos]).then(() => { 
-            properties = this.orderProperties(properties, 'rating');
-            this.setState({ propertiesList: this.addUniqueID(properties)});
-            this.props.callbackParent(false); // we notify our parent
+        Promise.all([getHouses, getCondos]).then(() => {
+            properties = this.orderProperties(properties, this.props.orderField);
+            this.setState({ propertiesList: this.addUniqueID(properties) });
+            this.props.callbackParent(false);
             this.loopTime = 15;
         });
 
@@ -85,23 +97,23 @@ class Properties extends React.Component {
 
     render() {
         return (
-
+            <div>
                 <ul>
                     {
-                        this.state.propertiesList.map( renderRow => {
-                            return <PropertyCard 
-                                key = {renderRow.title}
-                                price = {renderRow.price}
-                                bed = {renderRow.beds}
-                                bath = {renderRow.bath}
-                                rating = {renderRow.rating}
-                                ratingCount = {renderRow.ratingCount}
-                                image = {renderRow.image} 
+                        this.state.propertiesList.map(renderRow => {
+                            return <PropertyCard
+                                key={renderRow.title}
+                                price={renderRow.price}
+                                bed={renderRow.beds}
+                                bath={renderRow.bath}
+                                rating={renderRow.rating}
+                                ratingCount={renderRow.ratingCount}
+                                image={renderRow.image}
                             />
                         })
                     }
                 </ul>
-
+            </div>
         );
     }
 }

@@ -2,16 +2,16 @@ import React from 'react';
 
 class PropertyRatingInfo extends React.Component {
 
-    renderRatingStar(__pos){
-        switch (true){
-            case ( Number(__pos) <= Number(this.props.rating) ):   // Full
+    renderRatingStar(__pos) {
+        switch (true) {
+            case (Number(__pos) <= Number(this.props.rating)):   // Full
                 return <div className="card--text--review--start__full" />;
-            case ( Number(__pos - 0.5) ===  this.props.rating ):  // Half
+            case (Number(__pos - 0.5) === this.props.rating):  // Half
                 return <div className="card--text--review--start__half" />;
-            case ( Number(__pos) > Number(this.props.rating) ):      // Empty
+            case (Number(__pos) > Number(this.props.rating)):      // Empty
                 return <div className="card--text--review--start__empty" />;
             default:
-                return <div/>;
+                return <div />;
         }
     }
 
@@ -29,7 +29,7 @@ class PropertyRatingInfo extends React.Component {
                     </div>
                 </div>
             </div>
-        );  
+        );
     }
 }
 

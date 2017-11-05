@@ -17,9 +17,9 @@ class PropertyInfo extends React.Component {
                         <h6 className="card--text--feature--data">{this.props.bed} Beds · {this.props.bath} Bathrooms · Sleep {parseInt(this.props.bed * 1.5)}</h6>
                     </div>
                 </div>
-                <PropertyRatingInfo 
-                    rating = {this.props.rating}
-                    ratingCount = {this.props.ratingCount} 
+                <PropertyRatingInfo
+                    rating={this.props.rating}
+                    ratingCount={this.props.ratingCount}
                 />
             </div>
         );

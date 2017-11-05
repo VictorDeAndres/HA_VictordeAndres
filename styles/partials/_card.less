@@ -1,4 +1,10 @@
-// Add styles for the UI Component here
+.properties {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 167px;
+}
+
 .card {
     display: flex;
     flex-direction: column;
@@ -33,7 +39,7 @@
             align-items: baseline;
             &--price {
                 margin: unset;
-                color: #353e44;
+                color: @baseInk;
                 opacity: 1;
                 font-size: 18px;
                 font-weight: 700;
@@ -42,7 +48,7 @@
             &--average {
                 margin: unset;
                 padding: 0 4px;
-                color: #353e44;
+                color: @baseInk;
                 opacity: 1;
                 font-size: 14px;
                 font-weight: 400;
@@ -55,7 +61,7 @@
             justify-content: flex-start;
             &--data{
                 margin: unset;
-                color: #353e44;
+                color: @baseInk;
                 opacity: 1;
                 font-size: 14px;
                 font-weight: 400;
@@ -71,21 +77,21 @@
             &--start__full:before{
                 font-family: FontAwesome;
                 content: '\f005';
-                color: #fbda4d;
+                color: @fullStart;
                 opacity: 1;
                 padding: 0 3px;
             }
             &--start__half:before{
                 font-family: FontAwesome;
                 content: '\f005';
-                color: #d7d8da;
+                color: @emptyStar;
                 opacity: 1;
                 padding: 0 3px;
             }                        
             &--start__half:after{
                 font-family: FontAwesome;
                 content: '\f089';
-                color: #fbda4d;
+                color: @fullStart;
                 opacity: 1;
                 padding: 0 3px;
                 margin-left: -21px;
@@ -94,14 +100,14 @@
             &--start__empty:before{
                 font-family: FontAwesome;
                 content: '\f005';
-                color: #d7d8da;
+                color: @emptyStar;
                 opacity: 1;
                 padding: 0 2px;
             }
             &--text{
                 padding-left: 8px;
                 margin: unset;
-                color: #353e44;
+                color: @baseInk;
                 opacity: 1;
                 font-size: 14px;
                 font-weight: 400;
